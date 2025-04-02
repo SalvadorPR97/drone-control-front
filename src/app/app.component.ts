@@ -12,10 +12,5 @@ import {FooterComponent} from './core/components/footer/footer.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  isDarkMode = false;
 
-  toggleDarkMode() {
-    const element: HTMLElement|null = document.querySelector('html');
-    if (element) element.classList.toggle('my-app-dark');
-  }
 }
