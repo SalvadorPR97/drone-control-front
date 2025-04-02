@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
-import {RouterLink, RouterOutlet} from '@angular/router';
+import {RouterOutlet} from '@angular/router';
 import {Button} from 'primeng/button';
+import {NavbarComponent} from './core/components/navbar/navbar.component';
+import {FooterComponent} from './core/components/footer/footer.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink, Button],
+  imports: [RouterOutlet, Button, NavbarComponent, FooterComponent],
+  standalone: true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

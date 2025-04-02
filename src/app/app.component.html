@@ -1,5 +1,8 @@
-<nav>
-  <a routerLink="/">Home</a>
-</nav>
-<router-outlet></router-outlet>
+<app-core-navbar></app-core-navbar>
+
+<main>
+  <router-outlet></router-outlet>
+</main>
+
 <p-button label="Toggle Dark Mode" (onClick)="toggleDarkMode()"/>
+<app-core-footer></app-core-footer>
