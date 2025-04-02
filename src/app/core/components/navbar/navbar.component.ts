@@ -17,23 +17,5 @@ import { MegaMenuModule } from 'primeng/megamenu';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
-  public items = [
-    {
-      label: 'Home',
-      routerlink: '',
-    },
-    {
-      label: 'Drones',
-      routerlink: 'drones',
-    },
-    {
-      label: 'Matrices',
-      routerlink: 'matrices',
-    },
-    {
-      label: 'Flying Control',
-      routerlink: 'flying',
-    },
 
-  ]
 }
