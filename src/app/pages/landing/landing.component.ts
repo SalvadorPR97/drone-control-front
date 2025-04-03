@@ -6,7 +6,7 @@ import {RouterLink} from '@angular/router';
   selector: 'app-pages-landing',
   imports: [
     ButtonDirective,
-    RouterLink
+    RouterLink,
   ],
   standalone: true,
   templateUrl: './landing.component.html',

@@ -1,3 +1,6 @@
-.button-group button{
+.button-group mat-icon{
+  margin-right:5px;
+}
+.button-group span{
   margin-right:10px;
 }
