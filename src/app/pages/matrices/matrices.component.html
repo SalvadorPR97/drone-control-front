@@ -1,22 +1,39 @@
 <p-tabView [activeIndex]="0">
   <p-tabPanel header="Header I">
-    <p class="m-0">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-    </p>
+    <p-floatLabel class="d-inline-block">
+      <p-inputNumber inputId="integeronly" id="matrix_id" #matrix_id/>
+      <label for="matrix_id">Matrix ID</label>
+    </p-floatLabel>
+    <span pButton type="button" label="View Matrix" (click)="getMatrix(this.matrix_id.value)"></span>
+    <p-splitter [style]="{ height: '300px' }" styleClass="mb-5">
+      <ng-template pTemplate>
+        <div class="col d-flex align-items-center justify-content-center">
+          <!--Lista drones-->
+          <!--TODO mostrar la lista de drones que es un data view de primeng-->
+        </div>
+      </ng-template>
+      <ng-template pTemplate>
+        <div class="col d-flex align-items-center justify-content-center">
+          Matriz
+        </div>
+      </ng-template>
+    </p-splitter>
   </p-tabPanel>
 
   <p-tabPanel header="Header II">
     <p class="m-0">
-      Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
+      Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
+      aperiam,
       eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
     </p>
   </p-tabPanel>
 
   <p-tabPanel header="Header III">
     <p class="m-0">
-      At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti
-      quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia
+      At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque
+      corrupti
+      quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui
+      officia
       deserunt mollitia animi, id est laborum et dolorum fuga.
     </p>
   </p-tabPanel>
