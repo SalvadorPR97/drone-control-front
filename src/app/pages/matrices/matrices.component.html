@@ -1,57 +1,54 @@
 <p-tabView [activeIndex]="0">
-  <p-tabPanel header="Header I">
+  <p-tabPanel header="Show matrix">
     <p-floatLabel class="d-inline-block">
       <p-inputNumber inputId="integeronly" id="matrix_id" #matrix_id/>
       <label for="matrix_id">Matrix ID</label>
     </p-floatLabel>
     <span pButton type="button" label="View Matrix" (click)="getMatrix(this.matrix_id.value)"></span>
-    <div class="row mt-1">
-      <div class="col-6">
-        @if (matrix) {
-
-        <p-table
-          [value]="drones"
-          [scrollable]="true"
-          scrollHeight="400px"
-          [tableStyle]="{'width': '600px'}">
-          <ng-template pTemplate="header">
-            <tr>
-              <th>ID</th>
-              <th>Name</th>
-              <th>Model</th>
-              <th>X</th>
-              <th>Y</th>
-            </tr>
-          </ng-template>
-          <ng-template pTemplate="body" let-drone>
-            <tr>
-              <td>{{ drone.id }}</td>
-              <td>{{ drone.nombre }}</td>
-              <td>{{ drone.modelo }}</td>
-              <td>{{ drone.x }}</td>
-              <td>{{ drone.y }}</td>
-            </tr>
-          </ng-template>
-        </p-table>
-        }
-      </div>
-      <div class="col-6">
-        <div class="chessboard">
-          @if (matrix) {
-            @for (row of Array(matrix.max_x).keys(); track row) {
-              <tr class="row">
-                @for (col of Array(matrix.max_y).keys(); track col) {
-                  <td class="square col" [class.black]="isBusy(row, col)" [class.white]="!isBusy(row, col)">
-                  </td>
-                }
+    @if (matrix) {
+      <div class="row mt-1">
+        <div class="col-6">
+          <p-table
+            [value]="drones"
+            [scrollable]="true"
+            scrollHeight="400px"
+            [tableStyle]="{'width': '600px'}">
+            <ng-template pTemplate="header">
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Model</th>
+                <th>X</th>
+                <th>Y</th>
               </tr>
-            }
-
-          }
+            </ng-template>
+            <ng-template pTemplate="body" let-drone>
+              <tr>
+                <td>{{ drone.id }}</td>
+                <td>{{ drone.nombre }}</td>
+                <td>{{ drone.modelo }}</td>
+                <td>{{ drone.x }}</td>
+                <td>{{ drone.y }}</td>
+              </tr>
+            </ng-template>
+          </p-table>
         </div>
-        <span></span>
+        <div class="col-6">
+          <div class="chessboard" [style.--size]="matrix.max_y">
+            @for (row of Array(matrix.max_x).keys(); track row) {
+              @for (col of Array(matrix.max_x).keys(); track col) {
+                <div class="square" [class.black]="isBusy(row, col)" [class.white]="!isBusy(row, col)"></div>
+              }
+            }
+          </div>
+          <div class="row">
+            <span class="col">ID: {{ matrix.id }}</span>
+            <span class="col">Max_x: {{ matrix.max_x }}</span>
+            <span class="col">Max_y: {{ matrix.max_y }}</span>
+          </div>
+        </div>
       </div>
-    </div>
+    }
   </p-tabPanel>
 
   <p-tabPanel header="Header II">
