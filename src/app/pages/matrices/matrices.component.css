@@ -1,0 +1,19 @@
+.chessboard {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.square {
+  height: 50px;
+  border: 1px solid black;
+
+}
+
+.black {
+  background-color: #769656; /* Verde oscuro estilo ajedrez */
+}
+
+.white {
+  background-color: #eeeed2; /* Beige claro */
+}
