@@ -1,0 +1,30 @@
+<div class="row">
+  <span class="col">ID: {{ matrix.id }}</span>
+  <span class="col">Max_x: {{ matrix.max_x }}</span>
+  <span class="col">Max_y: {{ matrix.max_y }}</span>
+</div>
+<div class="grid-wrapper">
+  <!-- Coordenadas eje Y -->
+  <div class="y-axis">
+    @for (row of this.rows; track row) {
+      <div class="y-label">{{ row }}</div>
+    }
+    <!-- Espacio para esquina vacía -->
+    <div class="empty-corner"></div>
+  </div>
+  <div class="matrix-grid" [style.--size]="matrix.max_y">
+    @for (row of this.rows; track row) {
+      @for (col of this.cols; track col) {
+        <div class="square" [class.busyByDrone]="isBusy(row, col)" [class.empty]="!isBusy(row, col)">
+          <div class="arrow-text" [ngClass]="getArrowPositionClass(row, col)">
+            {{ getArrowSymbol(row, col) }}
+          </div>
+        </div>
+      }
+    }
+    <!-- Coordenadas eje X -->
+    @for (col of Array(matrix.max_y).keys(); track col) {
+      <div class="x-label">{{ col }}</div>
+    }
+  </div>
+</div>

@@ -13,6 +13,7 @@ import {TagModule} from 'primeng/tag';
 import {Drone} from '../../core/interfaces/Drone.interface';
 import {TableModule} from 'primeng/table';
 import {NgClass} from '@angular/common';
+import {GridComponent} from './components/grid/grid.component';
 
 @Component({
   selector: 'app-pages-matrices',
@@ -27,6 +28,7 @@ import {NgClass} from '@angular/common';
     TagModule,
     TableModule,
     NgClass,
+    GridComponent,
   ],
   standalone: true,
   templateUrl: './matrices.component.html',
@@ -47,28 +49,4 @@ export class MatricesComponent {
     }
   }
 
-  isBusy(x: number, y: number): boolean {
-    return this.drones.some(drone => drone.x === x && drone.y === y);
-  }
-
-  getArrowSymbol(row: number, col: number): string {
-    let drone: Drone|undefined = this.drones.find(drone => drone.x == row && drone.y == col);
-    if (drone) {
-      switch (drone.orientacion) {
-        case 'N': return '↑';
-        case 'S': return '↓';
-        case 'E': return '←';
-        case 'O': return '→';
-        default: return '';
-      }
-    }
-    return '';
-  }
-
-  getArrowPositionClass(row: number, col: number): string {
-    let drone: Drone|undefined = this.drones.find(drone => drone.x == row && drone.y == col);
-    return `arrow-${drone?.orientacion}`;
-  }
-
-  protected readonly Array = Array;
 }
