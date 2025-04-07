@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, SimpleChanges} from '@angular/core';
 import {Matrix} from '../../../../core/interfaces/Matrix.interface';
 import {NgClass} from '@angular/common';
 import {Drone} from '../../../../core/interfaces/Drone.interface';
@@ -9,20 +9,22 @@ import {Drone} from '../../../../core/interfaces/Drone.interface';
   imports: [
     NgClass
   ],
-  templateUrl: './grid.component.html',
-  styleUrl: './grid.component.css'
+  templateUrl: './matrix-grid.component.html',
+  styleUrl: './matrix-grid.component.css'
 })
-export class GridComponent {
+export class MatrixGridComponent {
   @Input()
   public matrix!: Matrix;
   public rows!: number[];
   public cols!: number[];
   public drones!: Drone[];
 
-  ngOnInit() {
-    this.drones = this.matrix.drones;
-    this.rows = [...(Array(this.matrix.max_x).keys())].slice().reverse();
-    this.cols = [...Array(this.matrix.max_y).keys()];
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['matrix']) {
+      this.drones = this.matrix.drones;
+      this.rows = [...(Array(this.matrix.max_x).keys())].slice().reverse();
+      this.cols = [...Array(this.matrix.max_y).keys()];
+    }
   }
 
   isBusy(x: number, y: number): boolean {

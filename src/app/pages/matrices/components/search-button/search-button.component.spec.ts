@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GridComponent } from './grid.component';
+import { SearchButtonComponent } from './search-button.component';
 
-describe('GridComponent', () => {
-  let component: GridComponent;
-  let fixture: ComponentFixture<GridComponent>;
+describe('SearchButtonComponent', () => {
+  let component: SearchButtonComponent;
+  let fixture: ComponentFixture<SearchButtonComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [GridComponent]
+      imports: [SearchButtonComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(GridComponent);
+    fixture = TestBed.createComponent(SearchButtonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,34 +1,20 @@
 import {Component} from '@angular/core';
-import {FormsModule} from '@angular/forms';
 import {TabViewModule} from 'primeng/tabview';
-import {FloatLabelModule} from 'primeng/floatlabel';
-import {InputNumberModule} from 'primeng/inputnumber';
-import {ButtonDirective} from 'primeng/button';
 import {Nullable} from 'primeng/ts-helpers';
 import {MatrixService} from '../../core/services/matrix.service';
 import {Matrix} from '../../core/interfaces/Matrix.interface';
-import { SplitterModule } from 'primeng/splitter';
-import {DataViewModule} from 'primeng/dataview';
-import {TagModule} from 'primeng/tag';
 import {Drone} from '../../core/interfaces/Drone.interface';
-import {TableModule} from 'primeng/table';
-import {GridComponent} from './components/grid/grid.component';
+import {MatrixGridComponent} from './components/grid/matrix-grid.component';
 import {DronesTableComponent} from '../drones/components/drones-table/drones-table.component';
+import {SearchButtonComponent} from './components/search-button/search-button.component';
 
 @Component({
   selector: 'app-pages-matrices',
   imports: [
-    FormsModule,
     TabViewModule,
-    FloatLabelModule,
-    InputNumberModule,
-    ButtonDirective,
-    SplitterModule,
-    DataViewModule,
-    TagModule,
-    TableModule,
-    GridComponent,
+    SearchButtonComponent,
     DronesTableComponent,
+    MatrixGridComponent
   ],
   standalone: true,
   templateUrl: './matrices.component.html',

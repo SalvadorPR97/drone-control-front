@@ -1,10 +1,6 @@
 <p-tabView [activeIndex]="0">
   <p-tabPanel header="Show matrix">
-    <p-floatLabel class="d-inline-block">
-      <p-inputNumber inputId="integeronly" id="matrix_id" #matrix_id/>
-      <label for="matrix_id">Matrix ID</label>
-    </p-floatLabel>
-    <span pButton type="button" label="View Matrix" (click)="getMatrix(this.matrix_id.value)"></span>
+    <pages-matrices-search-button (matrixIdEmitter)="getMatrix($event)" ></pages-matrices-search-button>
     @if (matrix) {
       <div class="row mt-1">
         <div class="col-6">
@@ -17,7 +13,7 @@
     }
   </p-tabPanel>
 
-  <p-tabPanel header="Header II">
+  <p-tabPanel header="Create Matrix">
     <p class="m-0">
       Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
       aperiam,
@@ -25,7 +21,16 @@
     </p>
   </p-tabPanel>
 
-  <p-tabPanel header="Header III">
+  <p-tabPanel header="Update Matrix">
+    <p class="m-0">
+      At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque
+      corrupti
+      quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui
+      officia
+      deserunt mollitia animi, id est laborum et dolorum fuga.
+    </p>
+  </p-tabPanel>
+  <p-tabPanel header="Delete Matrix">
     <p class="m-0">
       At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque
       corrupti
