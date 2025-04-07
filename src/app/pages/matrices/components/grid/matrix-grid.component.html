@@ -12,18 +12,18 @@
     <!-- Espacio para esquina vacía -->
     <div class="empty-corner"></div>
   </div>
-  <div class="matrix-grid" [style.--size]="matrix.max_y">
+  <div class="matrix-grid" [style.--size]="matrix.max_x">
     @for (row of this.rows; track row) {
       @for (col of this.cols; track col) {
-        <div class="square" [class.busyByDrone]="isBusy(row, col)" [class.empty]="!isBusy(row, col)">
-          <div class="arrow-text" [ngClass]="getArrowPositionClass(row, col)">
-            {{ getArrowSymbol(row, col) }}
+        <div class="square" [class.busyByDrone]="isBusy(col, row)" [class.empty]="!isBusy(col, row)">
+          <div class="arrow-text" [ngClass]="getArrowPositionClass(col, row)">
+            {{ getArrowSymbol(col, row) }}
           </div>
         </div>
       }
     }
     <!-- Coordenadas eje X -->
-    @for (col of Array(matrix.max_y).keys(); track col) {
+    @for (col of cols; track col) {
       <div class="x-label">{{ col }}</div>
     }
   </div>

@@ -22,8 +22,8 @@ export class MatrixGridComponent {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['matrix']) {
       this.drones = this.matrix.drones;
-      this.rows = [...(Array(this.matrix.max_x).keys())].slice().reverse();
-      this.cols = [...Array(this.matrix.max_y).keys()];
+      this.rows = [...Array(this.matrix.max_y).keys()].slice().reverse();
+      this.cols = [...(Array(this.matrix.max_x).keys())];
     }
   }
 
