@@ -12,8 +12,8 @@ import {DataViewModule} from 'primeng/dataview';
 import {TagModule} from 'primeng/tag';
 import {Drone} from '../../core/interfaces/Drone.interface';
 import {TableModule} from 'primeng/table';
-import {NgClass} from '@angular/common';
 import {GridComponent} from './components/grid/grid.component';
+import {DronesTableComponent} from '../drones/components/drones-table/drones-table.component';
 
 @Component({
   selector: 'app-pages-matrices',
@@ -27,8 +27,8 @@ import {GridComponent} from './components/grid/grid.component';
     DataViewModule,
     TagModule,
     TableModule,
-    NgClass,
     GridComponent,
+    DronesTableComponent,
   ],
   standalone: true,
   templateUrl: './matrices.component.html',
