@@ -2,18 +2,55 @@
   display: grid;
   grid-template-columns: repeat(var(--size), 1fr);
   width: 100%; /* O cualquier otro valor fijo */
-  max-width: 500px; /* Ajusta según necesidad */
 }
 
 .square {
-  aspect-ratio: 1 / 1; /* Hace que la altura sea igual al ancho */
+  aspect-ratio: 1 / 1;
   border: 1px solid black;
 }
 
 .black {
-  background-color: #769656; /* Verde oscuro estilo ajedrez */
+  background-image: url('/assets/imagenDrone.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
 }
 
 .white {
-  background-color: #eeeed2; /* Beige claro */
+  background-color: #eeeed2;
+}
+
+.arrow-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 1rem;
+  transform: translate(-50%, -50%);
+  color: red;
+  pointer-events: none;
+}
+
+.arrow-N {
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.arrow-S {
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.arrow-E {
+  top: 50%;
+  left: 5%;
+  transform: translateY(-50%);
+}
+
+.arrow-O {
+  top: 50%;
+  right: 5%;
+  transform: translateY(-50%);
 }

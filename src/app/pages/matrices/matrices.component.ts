@@ -12,6 +12,7 @@ import {DataViewModule} from 'primeng/dataview';
 import {TagModule} from 'primeng/tag';
 import {Drone} from '../../core/interfaces/Drone.interface';
 import {TableModule} from 'primeng/table';
+import {NgClass} from '@angular/common';
 
 @Component({
   selector: 'app-pages-matrices',
@@ -25,6 +26,7 @@ import {TableModule} from 'primeng/table';
     DataViewModule,
     TagModule,
     TableModule,
+    NgClass,
   ],
   standalone: true,
   templateUrl: './matrices.component.html',
@@ -47,6 +49,25 @@ export class MatricesComponent {
 
   isBusy(x: number, y: number): boolean {
     return this.drones.some(drone => drone.x === x && drone.y === y);
+  }
+
+  getArrowSymbol(row: number, col: number): string {
+    let drone: Drone|undefined = this.drones.find(drone => drone.x == row && drone.y == col);
+    if (drone) {
+      switch (drone.orientacion) {
+        case 'N': return '↑';
+        case 'S': return '↓';
+        case 'E': return '←';
+        case 'O': return '→';
+        default: return '';
+      }
+    }
+    return '';
+  }
+
+  getArrowPositionClass(row: number, col: number): string {
+    let drone: Drone|undefined = this.drones.find(drone => drone.x == row && drone.y == col);
+    return `arrow-${drone?.orientacion}`;
   }
 
   protected readonly Array = Array;
