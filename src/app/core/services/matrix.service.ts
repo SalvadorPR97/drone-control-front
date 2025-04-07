@@ -19,4 +19,7 @@ export class MatrixService {
   public createMatrix(matrixEntrada: MatrixEntrada): Observable<MatrixDTO> {
     return this.http.post<MatrixDTO>(`${this.matrixUrl}new`, matrixEntrada);
   }
+  public updateMatrix(matrixDTO: MatrixDTO): Observable<Matrix> {
+    return this.http.put<Matrix>(`${this.matrixUrl}update/${matrixDTO.id}`, matrixDTO);
+  }
 }

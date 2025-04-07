@@ -1,0 +1,17 @@
+<form [formGroup]="updateMatrixForm" class="d-flex gap-3">
+  <p-floatLabel class="d-inline-block">
+    <p-inputNumber id="max_x" formControlName="max_x" min="0" [showButtons]="true"/>
+    <label for="max_x">Max_x</label>
+  </p-floatLabel>
+  <p-floatLabel class="d-inline-block">
+    <p-inputNumber id="max_y" formControlName="max_y" min="0" [showButtons]="true"/>
+    <label for="max_y">Max_y</label>
+  </p-floatLabel>
+  <span pButton type="button" label="Update Matrix" (click)="onSubmit()"></span>
+</form>
+<p-dialog header="Matrix Updated" [modal]="true" [(visible)]="updatedModal" [style]="{ width: '25rem' }">
+  <span class="p-text block mb-5">Matrix updated correctly</span>
+  <div class="flex justify-content-end w-100">
+    <p-button label="Okay" severity="success" (onClick)="window.location.reload()" />
+  </div>
+</p-dialog>

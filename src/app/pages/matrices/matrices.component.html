@@ -1,10 +1,11 @@
-<p-tabView [activeIndex]="1">
-  <p-tabPanel header="Show matrix">
+<p-tabView [activeIndex]="0">
+  <p-tabPanel header="Show/Update matrix">
     <pages-matrices-search-button (matrixIdEmitter)="getMatrix($event)" ></pages-matrices-search-button>
     @if (matrix) {
       <div class="row mt-1">
         <div class="col-6">
           <pages-drones-drones-table [drones]="this.drones" ></pages-drones-drones-table>
+          <pages-matrices-form-update [matrix]="this.matrix" [updatedModal]="this.updatedModal" (updateMatrixEmitter)="updateMatrix($event)" ></pages-matrices-form-update>
         </div>
         <div class="col-6">
           <pages-matrices-matrix-grid [matrix]="this.matrix" ></pages-matrices-matrix-grid>
@@ -14,18 +15,9 @@
   </p-tabPanel>
 
   <p-tabPanel header="Create Matrix">
-    <pages-matrices-form-create (matrixDataEmitter)="createMatrix($event)" [visible]="visible" ></pages-matrices-form-create>
+    <pages-matrices-form-create (createMatrixEmitter)="createMatrix($event)" [visible]="createdModal" ></pages-matrices-form-create>
   </p-tabPanel>
 
-  <p-tabPanel header="Update Matrix">
-    <p class="m-0">
-      At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque
-      corrupti
-      quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui
-      officia
-      deserunt mollitia animi, id est laborum et dolorum fuga.
-    </p>
-  </p-tabPanel>
   <p-tabPanel header="Delete Matrix">
     <p class="m-0">
       At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque

@@ -10,6 +10,7 @@ import {SearchButtonComponent} from './components/search-button/search-button.co
 import {FormCreateComponent} from './components/form-create/form-create.component';
 import {MatrixEntrada} from './interfaces/MatrixEntrada.interface';
 import {MatrixDTO} from './interfaces/MatrixDTO.interface';
+import {FormUpdateComponent} from './components/form-update/form-update.component';
 
 @Component({
   selector: 'app-pages-matrices',
@@ -18,7 +19,8 @@ import {MatrixDTO} from './interfaces/MatrixDTO.interface';
     SearchButtonComponent,
     DronesTableComponent,
     MatrixGridComponent,
-    FormCreateComponent
+    FormCreateComponent,
+    FormUpdateComponent
   ],
   standalone: true,
   templateUrl: './matrices.component.html',
@@ -38,11 +40,18 @@ export class MatricesComponent {
       })
     }
   }
-  public visible: boolean = false;
+  public createdModal: boolean = false;
   public createMatrix(matrixEntrada: MatrixEntrada): void {
     this.matrixService.createMatrix(matrixEntrada).subscribe((res: MatrixDTO) => {
       console.log(res);
-      this.visible = true;
+      this.createdModal = true;
     });
+  }
+  public updatedModal: boolean = false;
+  public updateMatrix(matrixDTO: MatrixDTO): void {
+    this.matrixService.updateMatrix(matrixDTO).subscribe((res: MatrixDTO) => {
+      console.log(res);
+      this.updatedModal = true;
+    })
   }
 }

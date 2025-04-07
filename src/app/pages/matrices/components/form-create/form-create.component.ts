@@ -24,7 +24,7 @@ import {InputTextModule} from 'primeng/inputtext';
 })
 export class FormCreateComponent {
   @Output()
-  public matrixDataEmitter: EventEmitter<MatrixEntrada> = new EventEmitter();
+  public createMatrixEmitter: EventEmitter<MatrixEntrada> = new EventEmitter();
   @Input()
   public visible!: boolean;
   // Crear un FormGroup
@@ -42,7 +42,7 @@ export class FormCreateComponent {
   onSubmit() {
     if (this.createMatrixForm.valid) {
       console.log(this.createMatrixForm.value);
-      this.matrixDataEmitter.emit(this.createMatrixForm.value);
+      this.createMatrixEmitter.emit(this.createMatrixForm.value);
     } else {
       console.log(this.createMatrixForm.value);
       console.log('Formulario inválido');
