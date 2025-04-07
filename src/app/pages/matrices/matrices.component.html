@@ -1,4 +1,4 @@
-<p-tabView [activeIndex]="0">
+<p-tabView [activeIndex]="1">
   <p-tabPanel header="Show matrix">
     <pages-matrices-search-button (matrixIdEmitter)="getMatrix($event)" ></pages-matrices-search-button>
     @if (matrix) {
@@ -14,11 +14,7 @@
   </p-tabPanel>
 
   <p-tabPanel header="Create Matrix">
-    <p class="m-0">
-      Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
-      aperiam,
-      eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-    </p>
+    <pages-matrices-form-create (matrixDataEmitter)="createMatrix($event)" [visible]="visible" ></pages-matrices-form-create>
   </p-tabPanel>
 
   <p-tabPanel header="Update Matrix">

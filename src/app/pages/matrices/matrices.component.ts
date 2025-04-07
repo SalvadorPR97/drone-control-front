@@ -2,11 +2,14 @@ import {Component} from '@angular/core';
 import {TabViewModule} from 'primeng/tabview';
 import {Nullable} from 'primeng/ts-helpers';
 import {MatrixService} from '../../core/services/matrix.service';
-import {Matrix} from '../../core/interfaces/Matrix.interface';
-import {Drone} from '../../core/interfaces/Drone.interface';
+import {Matrix} from './interfaces/Matrix.interface';
+import {Drone} from '../drones/interfaces/Drone.interface';
 import {MatrixGridComponent} from './components/grid/matrix-grid.component';
 import {DronesTableComponent} from '../drones/components/drones-table/drones-table.component';
 import {SearchButtonComponent} from './components/search-button/search-button.component';
+import {FormCreateComponent} from './components/form-create/form-create.component';
+import {MatrixEntrada} from './interfaces/MatrixEntrada.interface';
+import {MatrixDTO} from './interfaces/MatrixDTO.interface';
 
 @Component({
   selector: 'app-pages-matrices',
@@ -14,7 +17,8 @@ import {SearchButtonComponent} from './components/search-button/search-button.co
     TabViewModule,
     SearchButtonComponent,
     DronesTableComponent,
-    MatrixGridComponent
+    MatrixGridComponent,
+    FormCreateComponent
   ],
   standalone: true,
   templateUrl: './matrices.component.html',
@@ -34,5 +38,11 @@ export class MatricesComponent {
       })
     }
   }
-
+  public visible: boolean = false;
+  public createMatrix(matrixEntrada: MatrixEntrada): void {
+    this.matrixService.createMatrix(matrixEntrada).subscribe((res: MatrixDTO) => {
+      console.log(res);
+      this.visible = true;
+    });
+  }
 }

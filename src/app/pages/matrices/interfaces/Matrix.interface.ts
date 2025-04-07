@@ -1,4 +1,4 @@
-import {Drone} from './Drone.interface';
+import {Drone} from '../../drones/interfaces/Drone.interface';
 
 export interface Matrix {
   id: number;

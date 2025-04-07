@@ -1,4 +1,4 @@
-import {Orientation} from './Orientation.enum';
+import {Orientation} from '../../../core/interfaces/Orientation.enum';
 
 export interface Drone {
   id: number;

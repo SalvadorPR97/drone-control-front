@@ -1,7 +1,7 @@
 import {Component, Input, SimpleChanges} from '@angular/core';
-import {Matrix} from '../../../../core/interfaces/Matrix.interface';
+import {Matrix} from '../../interfaces/Matrix.interface';
 import {NgClass} from '@angular/common';
-import {Drone} from '../../../../core/interfaces/Drone.interface';
+import {Drone} from '../../../drones/interfaces/Drone.interface';
 
 @Component({
   selector: 'pages-matrices-matrix-grid',
