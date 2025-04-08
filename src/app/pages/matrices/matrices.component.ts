@@ -61,7 +61,7 @@ export class MatricesComponent {
   public createMatrix(matrixEntrada: MatrixEntrada): void {
     this.createdModal = false;
     this.matrixService.createMatrix(matrixEntrada).subscribe({
-      next: (res: MatrixDTO) => {
+      next: () => {
         this.createdModal = true;
       },
       error: (error) => {
@@ -93,7 +93,7 @@ export class MatricesComponent {
 
   public deleteMatrix(id: number): void {
     this.matrixService.deleteMatrix(id).subscribe({
-      next: (res: MatrixDTO) => {
+      next: () => {
         window.location.reload();
       },
       error: (error) => {
