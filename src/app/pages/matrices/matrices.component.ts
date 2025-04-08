@@ -33,6 +33,7 @@ import {DeleteButtonComponent} from './components/delete-button/delete-button.co
   styleUrl: './matrices.component.css'
 })
 export class MatricesComponent {
+  public matricesIds: number[] = [];
   public matrix!: Matrix;
   public drones: Drone[] = [];
   public createdModal: boolean = false;
@@ -40,6 +41,13 @@ export class MatricesComponent {
 
   constructor(public matrixService: MatrixService,
               public messageService: MessageService,) {
+  }
+
+  ngOnInit() {
+    this.matrixService.getMatricesIds().subscribe(matricesIds => {
+      this.matricesIds = matricesIds;
+      console.log(this.matricesIds);
+    })
   }
 
   public getMatrix(id: number): void {

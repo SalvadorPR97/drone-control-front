@@ -1,7 +1,7 @@
 <p-toast></p-toast>
 <p-tabView [activeIndex]="0">
   <p-tabPanel header="Show/Update matrix">
-    <pages-matrices-search-button (matrixIdEmitter)="getMatrix($event)"></pages-matrices-search-button>
+    <pages-matrices-search-button (matrixIdEmitter)="getMatrix($event)" [matricesIds]="this.matricesIds"></pages-matrices-search-button>
     @if (matrix) {
       <div class="row mt-1">
         <div class="col-6">

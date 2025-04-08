@@ -1,5 +1,3 @@
-<p-floatLabel class="d-inline-block me-3">
-  <p-inputNumber #matrix_id [showButtons]="true" id="matrix_id" min="0"/>
-  <label for="matrix_id">Matrix ID</label>
-</p-floatLabel>
-<span (click)="this.emitId(this.matrix_id.value)" label="View Matrix" pButton type="button"></span>
+<p-dropdown [options]="matricesIds" placeholder="Select Matrix ID" [style]="{ width: '15rem' }" #matrixId
+class="me-2"></p-dropdown>
+<span (click)="this.emitId(this.matrixId.value)" label="View Matrix" pButton type="button"></span>

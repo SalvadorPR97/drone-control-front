@@ -13,6 +13,11 @@ export class MatrixService {
   private readonly matrixUrl: string = "http://localhost:8080/matrix/";
   constructor(private readonly http: HttpClient) {}
 
+  public getMatricesIds(): Observable<number[]> {
+    return this.http.get<number[]>(`${this.matrixUrl}getAll`).pipe(
+      catchError(this.handleError)
+    );
+  }
   public getMatrix(matrix_id: number): Observable<Matrix> {
     return this.http.get<Matrix>(`${this.matrixUrl}get/${matrix_id}`).pipe(
       catchError(this.handleError)
