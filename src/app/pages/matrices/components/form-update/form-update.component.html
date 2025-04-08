@@ -12,7 +12,7 @@
 </form>
 <p-dialog [(visible)]="updatedModal" [modal]="true" [style]="{ width: '25rem' }" header="Matrix Updated">
   <span class="p-text block mb-5">Matrix updated correctly</span>
-  <div class="flex justify-content-end w-100">
-    <p-button (onClick)="this.updatedModal = false" label="Okay" severity="success"/>
+  <div class="d-flex justify-content-end">
+    <p-button (onClick)="this.updatedModal = false" label="Okay" severity="primary"/>
   </div>
 </p-dialog>
