@@ -11,6 +11,7 @@ import {FormCreateComponent} from './components/form-create/form-create.componen
 import {MatrixEntrada} from './interfaces/MatrixEntrada.interface';
 import {MatrixDTO} from './interfaces/MatrixDTO.interface';
 import {FormUpdateComponent} from './components/form-update/form-update.component';
+import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-pages-matrices',
@@ -20,7 +21,8 @@ import {FormUpdateComponent} from './components/form-update/form-update.componen
     DronesTableComponent,
     MatrixGridComponent,
     FormCreateComponent,
-    FormUpdateComponent
+    FormUpdateComponent,
+    FormsModule
   ],
   standalone: true,
   templateUrl: './matrices.component.html',
@@ -43,15 +45,15 @@ export class MatricesComponent {
   public createdModal: boolean = false;
   public createMatrix(matrixEntrada: MatrixEntrada): void {
     this.matrixService.createMatrix(matrixEntrada).subscribe((res: MatrixDTO) => {
-      console.log(res);
       this.createdModal = true;
     });
   }
   public updatedModal: boolean = false;
   public updateMatrix(matrixDTO: MatrixDTO): void {
+    this.updatedModal = false;
     this.matrixService.updateMatrix(matrixDTO).subscribe((res: MatrixDTO) => {
-      console.log(res);
       this.updatedModal = true;
+      this.matrix = {...res, drones: this.matrix.drones};
     })
   }
 }

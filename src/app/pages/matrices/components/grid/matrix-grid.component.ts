@@ -2,12 +2,14 @@ import {Component, Input, SimpleChanges} from '@angular/core';
 import {Matrix} from '../../interfaces/Matrix.interface';
 import {NgClass} from '@angular/common';
 import {Drone} from '../../../drones/interfaces/Drone.interface';
+import {ChipModule} from 'primeng/chip';
 
 @Component({
   selector: 'pages-matrices-matrix-grid',
   standalone: true,
   imports: [
-    NgClass
+    NgClass,
+    ChipModule
   ],
   templateUrl: './matrix-grid.component.html',
   styleUrl: './matrix-grid.component.css'

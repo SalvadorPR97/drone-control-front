@@ -10,7 +10,7 @@
 .matrix-grid {
   display: grid;
   grid-template-columns: repeat(var(--size), 1fr);
-  width: 100%; /* O cualquier otro valor fijo */
+  width: 100%;
 }
 
 .square {
