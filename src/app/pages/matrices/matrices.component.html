@@ -8,6 +8,8 @@
           <pages-drones-drones-table [drones]="this.drones"></pages-drones-drones-table>
           <pages-matrices-form-update [matrix]="this.matrix" [updatedModal]="this.updatedModal"
                                       (updateMatrixEmitter)="updateMatrix($event)"></pages-matrices-form-update>
+          <pages-matrices-delete-button [matrix]="this.matrix"
+                                        (deleteMatrixEmitter)="deleteMatrix($event)"></pages-matrices-delete-button>
         </div>
         <div class="col-6">
           <pages-matrices-matrix-grid [matrix]="this.matrix"></pages-matrices-matrix-grid>
@@ -18,15 +20,5 @@
   <p-tabPanel header="Create Matrix">
     <pages-matrices-form-create (createMatrixEmitter)="createMatrix($event)"
                                 [visible]="createdModal"></pages-matrices-form-create>
-  </p-tabPanel>
-
-  <p-tabPanel header="Delete Matrix">
-    <p class="m-0">
-      At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque
-      corrupti
-      quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui
-      officia
-      deserunt mollitia animi, id est laborum et dolorum fuga.
-    </p>
   </p-tabPanel>
 </p-tabView>

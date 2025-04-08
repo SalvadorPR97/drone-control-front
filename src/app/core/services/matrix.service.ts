@@ -28,6 +28,11 @@ export class MatrixService {
       catchError(this.handleError)
     );
   }
+  public deleteMatrix(matrix_id: number): Observable<Matrix> {
+    return this.http.delete<Matrix>(`${this.matrixUrl}delete/${matrix_id}`).pipe(
+      catchError(this.handleError)
+    );
+  }
 
   private handleError(error: HttpErrorResponse) {
     let errorMessage = 'Ocurrió un error inesperado';

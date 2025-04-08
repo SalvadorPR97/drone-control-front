@@ -13,6 +13,7 @@ import {FormUpdateComponent} from './components/form-update/form-update.componen
 import {FormsModule} from '@angular/forms';
 import {MessageService} from 'primeng/api';
 import {ToastModule} from 'primeng/toast';
+import {DeleteButtonComponent} from './components/delete-button/delete-button.component';
 
 @Component({
   selector: 'app-pages-matrices',
@@ -24,7 +25,8 @@ import {ToastModule} from 'primeng/toast';
     FormCreateComponent,
     FormUpdateComponent,
     FormsModule,
-    ToastModule
+    ToastModule,
+    DeleteButtonComponent
   ],
   standalone: true,
   templateUrl: './matrices.component.html',
@@ -49,7 +51,7 @@ export class MatricesComponent {
       error: (error) => {
         this.messageService.add({
           severity: 'error',
-          summary: 'Error al obtener la matriz',
+          summary: 'Error getting the matrix',
           detail: error.message
         });
       }
@@ -87,5 +89,20 @@ export class MatricesComponent {
         });
       }
     })
+  }
+
+  public deleteMatrix(id: number): void {
+    this.matrixService.deleteMatrix(id).subscribe({
+      next: (res: MatrixDTO) => {
+        window.location.reload();
+      },
+      error: (error) => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error deleting matrix',
+          detail: error.message
+        });
+      }
+    });
   }
 }
