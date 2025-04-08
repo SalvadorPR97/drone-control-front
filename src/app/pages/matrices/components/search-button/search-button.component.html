@@ -1,5 +1,5 @@
 <p-floatLabel class="d-inline-block me-3">
-  <p-inputNumber id="matrix_id" min="0" [showButtons]="true" #matrix_id/>
+  <p-inputNumber #matrix_id [showButtons]="true" id="matrix_id" min="0"/>
   <label for="matrix_id">Matrix ID</label>
 </p-floatLabel>
-<span pButton type="button" label="View Matrix" (click)="this.matrixIdEmitter.emit(this.matrix_id.value)"></span>
+<span (click)="this.emitId(this.matrix_id.value)" label="View Matrix" pButton type="button"></span>

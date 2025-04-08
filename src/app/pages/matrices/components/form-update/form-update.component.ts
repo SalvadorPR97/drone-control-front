@@ -42,13 +42,10 @@ export class FormUpdateComponent {
   onSubmit() {
     if (this.updateMatrixForm.valid) {
       this.updateMatrixForm.setControl('id', new FormControl(this.matrix.id));
-      console.log(this.updateMatrixForm.value);
       this.updateMatrixEmitter.emit(this.updateMatrixForm.value);
     } else {
       console.log(this.updateMatrixForm.value);
       console.log('Formulario inválido');
     }
   }
-
-  protected readonly window = window;
 }

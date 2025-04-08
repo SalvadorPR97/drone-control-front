@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-center">
-  <div class="d-flex gap-4 fw-bold mb-2 px-2 rounded-1 text-white" [style.background-color]="'var(--primary-color)'">
+  <div [style.background-color]="'var(--primary-color)'" class="d-flex gap-4 fw-bold mb-2 px-2 rounded-1 text-white">
     <span>ID: {{ matrix.id }}</span>
     <span>Max x: {{ matrix.max_x }}</span>
     <span>Max y: {{ matrix.max_y }}</span>
@@ -13,7 +13,7 @@
     }
     <div class="empty-corner"></div>
   </div>
-  <div class="matrix-grid" [style.--size]="matrix.max_x">
+  <div [style.--size]="matrix.max_x" class="matrix-grid">
     @for (row of this.rows; track row) {
       @for (col of this.cols; track col) {
         <div class="square" [class.busyByDrone]="isBusy(col, row)" [class.empty]="!isBusy(col, row)">

@@ -17,5 +17,11 @@ import {Nullable} from 'primeng/ts-helpers';
 })
 export class SearchButtonComponent {
   @Output()
-  public matrixIdEmitter: EventEmitter<Nullable<number>> = new EventEmitter();
+  public matrixIdEmitter: EventEmitter<number> = new EventEmitter();
+
+  emitId(id: Nullable<number>): void {
+    if (id !== null) {
+      this.matrixIdEmitter.emit(id);
+    }
+  }
 }

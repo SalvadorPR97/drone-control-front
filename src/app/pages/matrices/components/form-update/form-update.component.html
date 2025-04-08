@@ -1,18 +1,18 @@
 <h3 class="mt-1 mb-4">Update matrix range</h3>
 <form [formGroup]="updateMatrixForm" class="d-flex gap-3">
   <p-floatLabel class="d-inline-block">
-    <p-inputNumber id="max_x" formControlName="max_x" min="0" [showButtons]="true"/>
+    <p-inputNumber [showButtons]="true" formControlName="max_x" id="max_x" min="0"/>
     <label for="max_x">Max_x</label>
   </p-floatLabel>
   <p-floatLabel class="d-inline-block">
-    <p-inputNumber id="max_y" formControlName="max_y" min="0" [showButtons]="true"/>
+    <p-inputNumber [showButtons]="true" formControlName="max_y" id="max_y" min="0"/>
     <label for="max_y">Max_y</label>
   </p-floatLabel>
-  <span pButton type="button" label="Update Matrix" (click)="onSubmit()"></span>
+  <span (click)="onSubmit()" label="Update Matrix" pButton type="button"></span>
 </form>
-<p-dialog header="Matrix Updated" [modal]="true" [(visible)]="updatedModal" [style]="{ width: '25rem' }">
+<p-dialog [(visible)]="updatedModal" [modal]="true" [style]="{ width: '25rem' }" header="Matrix Updated">
   <span class="p-text block mb-5">Matrix updated correctly</span>
   <div class="flex justify-content-end w-100">
-    <p-button label="Okay" severity="success" (onClick)="this.updatedModal = false" />
+    <p-button (onClick)="this.updatedModal = false" label="Okay" severity="success"/>
   </div>
 </p-dialog>

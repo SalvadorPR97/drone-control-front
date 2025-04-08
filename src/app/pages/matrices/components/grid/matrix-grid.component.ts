@@ -20,6 +20,7 @@ export class MatrixGridComponent {
   public rows!: number[];
   public cols!: number[];
   public drones!: Drone[];
+  protected readonly Array = Array;
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['matrix']) {
@@ -56,6 +57,4 @@ export class MatrixGridComponent {
     let drone: Drone | undefined = this.drones.find(drone => drone.x == row && drone.y == col);
     return `arrow-${drone?.orientacion}`;
   }
-
-  protected readonly Array = Array;
 }

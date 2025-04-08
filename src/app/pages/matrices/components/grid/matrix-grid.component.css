@@ -1,6 +1,7 @@
-:root{
-  --size : "";
+:root {
+  --size: "";
 }
+
 /* Grid of matrix */
 .grid-wrapper {
   display: flex;

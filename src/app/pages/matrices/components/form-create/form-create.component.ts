@@ -27,21 +27,17 @@ export class FormCreateComponent {
   public createMatrixEmitter: EventEmitter<MatrixEntrada> = new EventEmitter();
   @Input()
   public visible!: boolean;
-  // Crear un FormGroup
   createMatrixForm: FormGroup;
 
   constructor() {
-    // Inicializar el FormGroup con controles y validadores
     this.createMatrixForm = new FormGroup({
       max_x: new FormControl(null, [Validators.required, Validators.min(0)]),
       max_y: new FormControl(null, [Validators.required, Validators.min(0)]),
     });
   }
 
-  // Método para enviar el formulario
   onSubmit() {
     if (this.createMatrixForm.valid) {
-      console.log(this.createMatrixForm.value);
       this.createMatrixEmitter.emit(this.createMatrixForm.value);
     } else {
       console.log(this.createMatrixForm.value);

@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {TabViewModule} from 'primeng/tabview';
-import {Nullable} from 'primeng/ts-helpers';
 import {MatrixService} from '../../core/services/matrix.service';
 import {Matrix} from './interfaces/Matrix.interface';
 import {Drone} from '../drones/interfaces/Drone.interface';
@@ -12,6 +11,8 @@ import {MatrixEntrada} from './interfaces/MatrixEntrada.interface';
 import {MatrixDTO} from './interfaces/MatrixDTO.interface';
 import {FormUpdateComponent} from './components/form-update/form-update.component';
 import {FormsModule} from '@angular/forms';
+import {MessageService} from 'primeng/api';
+import {ToastModule} from 'primeng/toast';
 
 @Component({
   selector: 'app-pages-matrices',
@@ -22,38 +23,69 @@ import {FormsModule} from '@angular/forms';
     MatrixGridComponent,
     FormCreateComponent,
     FormUpdateComponent,
-    FormsModule
+    FormsModule,
+    ToastModule
   ],
   standalone: true,
   templateUrl: './matrices.component.html',
   styleUrl: './matrices.component.css'
 })
 export class MatricesComponent {
-  constructor(public matrixService: MatrixService) {
-  }
-
   public matrix!: Matrix;
   public drones: Drone[] = [];
-  public getMatrix(id: Nullable<number>): void {
-    if (id != null) {
-      this.matrixService.getMatrix(id).subscribe((res: Matrix) => {
+  public createdModal: boolean = false;
+  public updatedModal: boolean = false;
+
+  constructor(public matrixService: MatrixService,
+              public messageService: MessageService,) {
+  }
+
+  public getMatrix(id: number): void {
+    this.matrixService.getMatrix(id).subscribe({
+      next: (res: Matrix) => {
         this.matrix = res;
         this.drones = res.drones;
-      })
-    }
-  }
-  public createdModal: boolean = false;
-  public createMatrix(matrixEntrada: MatrixEntrada): void {
-    this.matrixService.createMatrix(matrixEntrada).subscribe((res: MatrixDTO) => {
-      this.createdModal = true;
+      },
+      error: (error) => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error al obtener la matriz',
+          detail: error.message
+        });
+      }
     });
   }
-  public updatedModal: boolean = false;
+
+  public createMatrix(matrixEntrada: MatrixEntrada): void {
+    this.createdModal = false;
+    this.matrixService.createMatrix(matrixEntrada).subscribe({
+      next: (res: MatrixDTO) => {
+        this.createdModal = true;
+      },
+      error: (error) => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error creating matrix',
+          detail: error.message
+        });
+      }
+    });
+  }
+
   public updateMatrix(matrixDTO: MatrixDTO): void {
     this.updatedModal = false;
-    this.matrixService.updateMatrix(matrixDTO).subscribe((res: MatrixDTO) => {
-      this.updatedModal = true;
-      this.matrix = {...res, drones: this.matrix.drones};
+    this.matrixService.updateMatrix(matrixDTO).subscribe({
+      next: (res: MatrixDTO) => {
+        this.updatedModal = true;
+        this.matrix = {...res, drones: this.matrix.drones};
+      },
+      error: (error) => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error updating matrix',
+          detail: error.message
+        });
+      }
     })
   }
 }
