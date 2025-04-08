@@ -24,7 +24,6 @@ export class SearchButtonComponent {
   public matricesIds!: number[];
 
 
-
   emitId(id: Nullable<number>): void {
     if (id !== null) {
       this.matrixIdEmitter.emit(id);

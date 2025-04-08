@@ -46,7 +46,6 @@ export class MatricesComponent {
   ngOnInit() {
     this.matrixService.getMatricesIds().subscribe(matricesIds => {
       this.matricesIds = matricesIds;
-      console.log(this.matricesIds);
     })
   }
 

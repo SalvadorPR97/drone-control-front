@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { DeleteButtonComponent } from './delete-button.component';
+import {DeleteButtonComponent} from './delete-button.component';
 
 describe('DeleteButtonComponent', () => {
   let component: DeleteButtonComponent;
@@ -10,7 +10,7 @@ describe('DeleteButtonComponent', () => {
     await TestBed.configureTestingModule({
       imports: [DeleteButtonComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(DeleteButtonComponent);
     component = fixture.componentInstance;

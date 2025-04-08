@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output, SimpleChanges} from '@angular/core';
 import {Button, ButtonDirective} from 'primeng/button';
 import {DialogModule} from 'primeng/dialog';
 import {FloatLabelModule} from 'primeng/floatlabel';
@@ -32,11 +32,13 @@ export class FormUpdateComponent {
 
   updateMatrixForm!: FormGroup;
 
-  ngOnInit() {
-    this.updateMatrixForm = new FormGroup({
-      max_x: new FormControl(this.matrix.max_x, [Validators.required, Validators.min(0)]),
-      max_y: new FormControl(this.matrix.max_y, [Validators.required, Validators.min(0)]),
-    });
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['matrix']) {
+      this.updateMatrixForm = new FormGroup({
+        max_x: new FormControl(this.matrix.max_x, [Validators.required, Validators.min(0)]),
+        max_y: new FormControl(this.matrix.max_y, [Validators.required, Validators.min(0)]),
+      });
+    }
   }
 
   onSubmit() {
