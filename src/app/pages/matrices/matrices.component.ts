@@ -4,7 +4,7 @@ import {MatrixService} from '../../core/services/matrix.service';
 import {Matrix} from './interfaces/Matrix.interface';
 import {Drone} from '../drones/interfaces/Drone.interface';
 import {MatrixGridComponent} from './components/grid/matrix-grid.component';
-import {DronesTableComponent} from '../drones/components/drones-table/drones-table.component';
+import {DronesTableComponent} from './components/drones-table/drones-table.component';
 import {SearchButtonComponent} from './components/search-button/search-button.component';
 import {FormCreateComponent} from './components/form-create/form-create.component';
 import {MatrixEntrada} from './interfaces/MatrixEntrada.interface';

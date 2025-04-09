@@ -1,10 +1,10 @@
 import {Component, Input} from '@angular/core';
 import {PrimeTemplate} from 'primeng/api';
 import {TableModule} from 'primeng/table';
-import {Drone} from '../../interfaces/Drone.interface';
+import {Drone} from '../../../drones/interfaces/Drone.interface';
 
 @Component({
-  selector: 'pages-drones-drones-table',
+  selector: 'pages-matrices-drones-table',
   standalone: true,
   imports: [
     PrimeTemplate,

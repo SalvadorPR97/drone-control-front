@@ -1,9 +1,28 @@
 import { Injectable } from '@angular/core';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {catchError, Observable, throwError} from 'rxjs';
+import {DroneDTO} from '../../pages/drones/interfaces/DroneDTO.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DroneService {
 
-  constructor() { }
+  constructor(private readonly http: HttpClient) { }
+  private readonly dronesBaseUrl: string = 'http://localhost:8080/drone/';
+
+  public getAllDrones(): Observable<DroneDTO[]> {
+    return this.http.get<DroneDTO[]>(`${this.dronesBaseUrl}getAll`).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    let errorMessage = 'Ocurrió un error inesperado';
+    if (error.error?.message) {
+      errorMessage = error.error.message;
+    }
+    const errorCode = error.status;
+    return throwError(() => new Error(`Código de error: ${errorCode}, Mensaje: ${errorMessage}`));
+  }
 }

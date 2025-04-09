@@ -6,7 +6,7 @@
     @if (matrix) {
       <div class="row mt-1">
         <div class="col-6">
-          <pages-drones-drones-table [drones]="this.drones"></pages-drones-drones-table>
+          <pages-matrices-drones-table [drones]="this.drones"></pages-matrices-drones-table>
           <pages-matrices-form-update [matrix]="this.matrix" [updatedModal]="this.updatedModal"
                                       (updateMatrixEmitter)="updateMatrix($event)"></pages-matrices-form-update>
           <pages-matrices-delete-button [matrix]="this.matrix"
