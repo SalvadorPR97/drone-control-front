@@ -30,5 +30,6 @@ export class UpdateModalComponent {
 
   saveChanges() {
     this.save.emit(this.drone);
+    this.close();
   }
 }
