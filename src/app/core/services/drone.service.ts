@@ -17,6 +17,12 @@ export class DroneService {
     );
   }
 
+  public updateDrone(drone: DroneDTO): Observable<DroneDTO> {
+    return this.http.put<DroneDTO>(`${this.dronesBaseUrl}update/${drone.matrizId}`, drone).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   private handleError(error: HttpErrorResponse) {
     let errorMessage = 'Ocurrió un error inesperado';
     if (error.error?.message) {

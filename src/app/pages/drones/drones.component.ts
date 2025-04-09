@@ -21,4 +21,15 @@ export class DronesComponent {
     this.droneService.getAllDrones().subscribe((drones) => this.drones = drones);
   }
 
+  public updateDrone(drone: DroneDTO) {
+    this.droneService.updateDrone(drone).subscribe((drone: DroneDTO) => {
+      this.drones = this.drones.map(oldDrone => {
+        if (oldDrone.id === drone.id) {
+          return drone;
+        }
+        return oldDrone;
+      })
+    });
+    console.log(this.drones);
+  }
 }

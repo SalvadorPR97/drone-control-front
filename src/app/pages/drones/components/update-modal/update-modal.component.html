@@ -1,0 +1,47 @@
+<p-dialog
+  header="Edit Drone"
+  [(visible)]="visible"
+  (onHide)="close()"
+  [modal]="true"
+  [style]="{ width: '30rem' }"
+  position="right"
+>
+  <div class="p-fluid">
+    <div class="p-field mb-3">
+      <label for="nombre">Name:</label>
+      <input id="nombre" type="text" pInputText [(ngModel)]="drone.nombre" />
+    </div>
+
+    <div class="p-field mb-3">
+      <label for="modelo">Model:</label>
+      <input id="modelo" type="text" pInputText [(ngModel)]="drone.modelo" />
+    </div>
+
+    <div class="p-field mb-3">
+      <label for="x">X:</label>
+      <input id="x" type="text" pInputText [(ngModel)]="drone.x" />
+    </div>
+
+    <div class="p-field mb-3">
+      <label for="y">Y:</label>
+      <input id="y" type="text" pInputText [(ngModel)]="drone.y" />
+    </div>
+
+    <div class="p-field mb-3">
+      <label for="orientacion">Orientation:</label>
+      <input id="orientacion" type="text" pInputText [(ngModel)]="drone.orientacion" />
+    </div>
+
+    <div class="p-field mb-3">
+      <label for="matrizId">Matrix ID: </label>
+      <input id="matrizId" type="text" pInputText [(ngModel)]="drone.matrizId" />
+    </div>
+
+    <!-- Otros campos -->
+
+    <div class="d-flex justify-content-end">
+      <span pButton label="Save" icon="pi pi-check" (click)="saveChanges()" class="me-2"></span>
+      <span pButton label="Cancel" icon="pi pi-times" (click)="close()" class="p-button-secondary"></span>
+    </div>
+  </div>
+</p-dialog>
