@@ -1,0 +1,35 @@
+<h3 class="my-2 text-center">Drones' List</h3>
+<p-table
+  [value]="drones"
+  [scrollable]="true"
+  scrollHeight="600px"
+  [style]="{ tableLayout: 'fixed' }"
+>
+  <ng-template pTemplate="header">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Model</th>
+      <th>X</th>
+      <th>Y</th>
+      <th>Orientation</th>
+      <th>Matrix Id</th>
+      <th>Actions</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-drone>
+    <tr class="text-center">
+      <td>{{ drone.id }}</td>
+      <td>{{ drone.nombre }}</td>
+      <td>{{ drone.modelo }}</td>
+      <td>{{ drone.x }}</td>
+      <td>{{ drone.y }}</td>
+      <td>{{ drone.orientacion }}</td>
+      <td>{{ drone.matrizId }}</td>
+      <td>
+        <span label="Edit" pButton type="button" severity="help"></span>
+        <span label="Delete" pButton type="button" severity="danger"></span>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
