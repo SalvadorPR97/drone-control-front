@@ -90,7 +90,7 @@ export class DronesComponent {
 
   public deleteDrone(droneId: number) {
     this.droneService.deleteDrone(droneId).subscribe({
-      next: (drone: DroneDTO) => {
+      next: () => {
         this.messageService.add({
           severity: 'success',
           summary: 'Drone deleted',
