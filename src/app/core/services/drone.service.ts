@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {catchError, Observable, throwError} from 'rxjs';
 import {DroneDTO} from '../../pages/drones/interfaces/DroneDTO.interface';
+import {DroneNoId} from '../../pages/drones/interfaces/DroneNoId.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,12 @@ export class DroneService {
 
   public updateDrone(drone: DroneDTO): Observable<DroneDTO> {
     return this.http.put<DroneDTO>(`${this.dronesBaseUrl}update/${drone.matrizId}`, drone).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  public createDrone(drone: DroneNoId): Observable<DroneDTO> {
+    return this.http.post<DroneDTO>(`${this.dronesBaseUrl}new`, drone).pipe(
       catchError(this.handleError)
     );
   }

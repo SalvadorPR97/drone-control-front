@@ -1,0 +1,39 @@
+<span (click)="this.visible = true" label="Create Drone" pButton severity="info" type="button"></span>
+<p-dialog
+  header="New Drone"
+  [(visible)]="visible"
+  (onHide)="close()"
+  [modal]="true"
+  [style]="{ width: '30rem', padding: '1rem' }"
+  position="center">
+
+  <div class="p-fluid mt-4">
+    <form [formGroup]="createDroneForm" class="d-flex flex-column gap-4">
+      <p-floatLabel>
+        <input pInputText id="nombre" formControlName="nombre"/>
+        <label for="nombre">Name: </label>
+      </p-floatLabel>
+      <p-floatLabel>
+        <input pInputText id="modelo" formControlName="modelo"/>
+        <label for="modelo">Model: </label>
+      </p-floatLabel>
+      <p-floatLabel class="d-inline-block">
+        <p-inputNumber [showButtons]="true" formControlName="x" id="x" min="0"/>
+        <label for="x">X: </label>
+      </p-floatLabel>
+      <p-floatLabel class="d-inline-block">
+        <p-inputNumber [showButtons]="true" formControlName="y" id="y" min="0"/>
+        <label for="y">Y: </label>
+      </p-floatLabel>
+      <p-dropdown [options]="this.orientation" id="orientacion" formControlName="orientacion" [style]="{ width: '15rem' }"
+                  class="me-2" placeholder="Select orientation"></p-dropdown>
+      <p-dropdown [options]="matricesIds" id="matrizId" formControlName="matrizId" [style]="{ width: '15rem' }"
+                  class="me-2" placeholder="Select Matrix ID"></p-dropdown>
+      <div class="d-flex justify-content-end">
+        <span pButton label="Save" icon="pi pi-check" (click)="create()" class="me-2"></span>
+        <span pButton label="Cancel" icon="pi pi-times" (click)="close()" class="p-button-secondary"></span>
+      </div>
+    </form>
+  </div>
+</p-dialog>
+<p-toast></p-toast>

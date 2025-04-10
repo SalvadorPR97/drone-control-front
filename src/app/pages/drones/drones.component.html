@@ -1,2 +1,8 @@
-<pages-drones-table-all-drones [drones]="this.drones" (updatedDroneEmitter)="updateDrone($event)"></pages-drones-table-all-drones>
+<div class="d-flex align-items-center justify-content-between w-100 my-2">
+  <h3 class="text-center flex-grow-1">Drone List</h3>
+  <pages-drones-create-drone class="ms-auto me-2" (createDroneEmitter)="createDrone($event)"
+                              [created]="this.droneCreated"></pages-drones-create-drone>
+</div>
+<pages-drones-table-all-drones [drones]="this.drones"
+                               (updatedDroneEmitter)="updateDrone($event)"></pages-drones-table-all-drones>
 <p-toast></p-toast>

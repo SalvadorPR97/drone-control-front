@@ -36,7 +36,6 @@ export class TableAllDronesComponent {
 
   closeEditModal(): void {
     this.editModalVisible = false;
-    console.log(this.editModalVisible)
   }
 
   updateDrone(updatedDrone: DroneDTO): void {

@@ -4,12 +4,15 @@ import {DroneService} from '../../core/services/drone.service';
 import {DroneDTO} from './interfaces/DroneDTO.interface';
 import {ToastModule} from 'primeng/toast';
 import {MessageService} from 'primeng/api';
+import {CreateDroneComponent} from './components/create-drone/create-drone.component';
+import {DroneNoId} from './interfaces/DroneNoId.interface';
 
 @Component({
   selector: 'app-pages-drones',
   imports: [
     TableAllDronesComponent,
-    ToastModule
+    ToastModule,
+    CreateDroneComponent
   ],
   standalone: true,
   templateUrl: './drones.component.html',
@@ -21,6 +24,7 @@ export class DronesComponent {
   }
 
   public drones!: DroneDTO[];
+  public droneCreated:boolean = false;
 
   ngOnInit() {
     this.droneService.getAllDrones().subscribe({
@@ -34,7 +38,6 @@ export class DronesComponent {
         });
       }
     });
-
   }
 
   public updateDrone(drone: DroneDTO) {
@@ -62,4 +65,28 @@ export class DronesComponent {
     });
     console.log(this.drones);
   }
+
+  public createDrone(drone: DroneNoId) {
+    this.droneService.createDrone(drone).subscribe({
+      next: (drone: DroneDTO) => {
+        this.drones.push(drone);
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Drone created',
+          detail: "Drone created successfully",
+        });
+        this.droneCreated = true;
+      },
+      error: (error) => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error creating drone',
+          detail: error.message
+        });
+      }
+    });
+    console.log(this.drones);
+  }
+
+
 }
