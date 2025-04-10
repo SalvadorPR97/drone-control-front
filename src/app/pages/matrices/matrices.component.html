@@ -9,7 +9,8 @@
           <pages-matrices-drones-table [drones]="this.drones"></pages-matrices-drones-table>
           <pages-matrices-form-update [matrix]="this.matrix" [updatedModal]="this.updatedModal"
                                       (updateMatrixEmitter)="updateMatrix($event)"></pages-matrices-form-update>
-          <pages-matrices-delete-button [matrix]="this.matrix"
+          <h3 class="mt-2">Delete Matrix</h3>
+          <pages-matrices-delete-button [matrix]="this.matrix" [title]="this.deleteTitle"
                                         (deleteMatrixEmitter)="deleteMatrix($event)"></pages-matrices-delete-button>
         </div>
         <div class="col-6">

@@ -38,6 +38,8 @@ export class MatricesComponent {
   public drones: Drone[] = [];
   public createdModal: boolean = false;
   public updatedModal: boolean = false;
+  public deleteTitle: string = "Are you sure about deleting this matrix?";
+  public deletesubTitle: string = "Remember that you can´t delete the matrix if it has drones flying";
 
   constructor(public matrixService: MatrixService,
               public messageService: MessageService,) {

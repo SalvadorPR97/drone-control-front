@@ -88,5 +88,24 @@ export class DronesComponent {
     console.log(this.drones);
   }
 
+  public deleteDrone(droneId: number) {
+    this.droneService.deleteDrone(droneId).subscribe({
+      next: (drone: DroneDTO) => {
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Drone deleted',
+          detail: "Drone deleted successfully",
+        });
+      },
+      error: (error) => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error deleting drone',
+          detail: error.message
+        });
+      }
+    });
+  }
+
 
 }

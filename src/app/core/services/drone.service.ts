@@ -30,6 +30,12 @@ export class DroneService {
     );
   }
 
+  public deleteDrone(droneId: number): Observable<DroneDTO> {
+    return this.http.delete<DroneDTO>(`${this.dronesBaseUrl}delete/${droneId}`).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   private handleError(error: HttpErrorResponse) {
     let errorMessage = 'Ocurrió un error inesperado';
     if (error.error?.message) {
