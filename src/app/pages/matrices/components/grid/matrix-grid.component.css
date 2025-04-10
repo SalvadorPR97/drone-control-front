@@ -83,13 +83,13 @@
 
 .arrow-E {
   top: 50%;
-  left: 5%;
+  right: 5%;
   transform: translateY(-50%);
 }
 
 .arrow-O {
   top: 50%;
-  right: 5%;
+  left: 5%;
   transform: translateY(-50%);
 }
 

@@ -43,9 +43,9 @@ export class MatrixGridComponent {
         case 'S':
           return '↓';
         case 'E':
-          return '←';
-        case 'O':
           return '→';
+        case 'O':
+          return '←';
         default:
           return '';
       }

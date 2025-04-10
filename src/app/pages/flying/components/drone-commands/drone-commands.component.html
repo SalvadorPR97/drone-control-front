@@ -1,0 +1,17 @@
+<div class="d-flex flex-wrap gap-2">
+  <span
+    (click)="this.emitCommand(Command.TURN_LEFT)"
+    pButton
+    label="Turn left"
+    severity="secondary"><mat-icon>rotate_left</mat-icon></span>
+  <span
+    (click)="this.emitCommand(Command.MOVE_FORWARD)"
+    pButton
+    label="Move Forward"
+    severity="secondary"><mat-icon>arrow_upward</mat-icon></span>
+  <span
+    (click)="this.emitCommand(Command.TURN_RIGHT)"
+    pButton
+    label="Turn Right"
+    severity="secondary"><mat-icon>rotate_right</mat-icon></span>
+</div>

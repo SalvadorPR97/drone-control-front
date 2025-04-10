@@ -1,1 +1,14 @@
-<p>flying works!</p>
+<pages-matrices-search-button (matrixIdEmitter)="getMatrix($event)"
+                              [matricesIds]="this.matricesIds"></pages-matrices-search-button>
+@if (matrix) {
+  <div class="row mt-1">
+    <div class="col-6">
+      <pages-flying-drones-table [drones]="this.drones" (selectedDronesEmitter)="this.selectedDrones = $event" ></pages-flying-drones-table>
+      <pages-flying-drone-commands (commandEmitter)="moveDrone($event)" ></pages-flying-drone-commands>
+    </div>
+    <div class="col-6">
+      <pages-matrices-matrix-grid [matrix]="this.matrix"></pages-matrices-matrix-grid>
+    </div>
+  </div>
+}
+<p-toast></p-toast>

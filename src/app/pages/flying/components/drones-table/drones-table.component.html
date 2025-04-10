@@ -1,0 +1,31 @@
+<h3 class="mb-2">Drones in matrix</h3>
+<p-table
+  [value]="drones"
+  selectionMode="multiple"
+  [(selection)]="this.selectedDrones"
+  dataKey="id"
+  (onRowSelect)="emitSelectedDrones()"
+  (onRowUnselect)="emitSelectedDrones()"
+  [scrollable]="true"
+  scrollHeight="600px">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Model</th>
+      <th>X</th>
+      <th>Y</th>
+      <th>Orientation</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-drone>
+    <tr [pSelectableRow]="drone">
+      <td>{{ drone.id }}</td>
+      <td>{{ drone.nombre }}</td>
+      <td>{{ drone.modelo }}</td>
+      <td>{{ drone.x }}</td>
+      <td>{{ drone.y }}</td>
+      <td>{{ drone.orientacion }}</td>
+    </tr>
+  </ng-template>
+</p-table>

@@ -11,6 +11,7 @@
                                       (updateMatrixEmitter)="updateMatrix($event)"></pages-matrices-form-update>
           <h3 class="mt-2">Delete Matrix</h3>
           <pages-matrices-delete-button [matrix]="this.matrix" [title]="this.deleteTitle"
+                                        [subtitle]="this.deletesubTitle"
                                         (deleteMatrixEmitter)="deleteMatrix($event)"></pages-matrices-delete-button>
         </div>
         <div class="col-6">
