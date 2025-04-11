@@ -1,14 +1,24 @@
-<pages-matrices-search-button (matrixIdEmitter)="getMatrix($event)"
-                              [matricesIds]="this.matricesIds"></pages-matrices-search-button>
-@if (matrix) {
-  <div class="row mt-1">
-    <div class="col-6">
-      <pages-flying-drones-table [drones]="this.drones" (selectedDronesEmitter)="this.selectedDrones = $event" ></pages-flying-drones-table>
-      <pages-flying-drone-commands (commandEmitter)="moveDrone($event)" ></pages-flying-drone-commands>
+<div class="py-2 ps-3 pe-4">
+  <pages-matrices-search-button (matrixIdEmitter)="getMatrix($event)"
+                                [matricesIds]="this.matricesIds"></pages-matrices-search-button>
+  @if (matrix) {
+    <div class="row mt-1">
+      <div class="col-6">
+        <pages-flying-drones-table [drones]="this.drones"
+                                   (selectedDronesEmitter)="this.selectedDrones = $event"></pages-flying-drones-table>
+        <div class="d-inline-flex flex-column align-items-center mt-3"
+             [ngStyle]="{backgroundColor:'var(--indigo-500)', color: 'var(--primary-color-text)', borderRadius: 'var(--border-radius)'}">
+          <h3>Commands panel</h3>
+          <p>Select the drone/s in the table on top and move them with the same command</p>
+          <pages-flying-drone-commands (commandEmitter)="moveDrone($event)"></pages-flying-drone-commands>
+        </div>
+      </div>
+      <div class="col-6">
+        <pages-matrices-matrix-grid [matrix]="this.matrix"></pages-matrices-matrix-grid>
+      </div>
     </div>
-    <div class="col-6">
-      <pages-matrices-matrix-grid [matrix]="this.matrix"></pages-matrices-matrix-grid>
-    </div>
-  </div>
-}
-<p-toast></p-toast>
+  }
+  <p-toast></p-toast>
+</div>
+
+
