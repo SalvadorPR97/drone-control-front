@@ -6,12 +6,18 @@
       <div class="col-6">
         <pages-flying-drones-table [drones]="this.drones"
                                    (selectedDronesEmitter)="this.selectedDrones = $event"></pages-flying-drones-table>
-        <div class="d-inline-flex flex-column align-items-center mt-3"
-             [ngStyle]="{backgroundColor:'var(--indigo-500)', color: 'var(--primary-color-text)', borderRadius: 'var(--border-radius)'}">
+        <div class="d-inline-flex flex-column align-items-center mt-3 p-2">
           <h3>Commands panel</h3>
           <p>Select the drone/s in the table on top and move them with the same command</p>
-          <pages-flying-drone-commands (commandEmitter)="moveDrone($event)"></pages-flying-drone-commands>
         </div>
+        <p-accordion>
+          <p-accordionTab header="Single command">
+            <pages-flying-drone-commands (commandEmitter)="moveDrone($event)"></pages-flying-drone-commands>
+          </p-accordionTab>
+          <p-accordionTab header="Multiple commands">
+            <pages-flying-command-list-exec></pages-flying-command-list-exec>
+          </p-accordionTab>
+        </p-accordion>
       </div>
       <div class="col-6">
         <pages-matrices-matrix-grid [matrix]="this.matrix"></pages-matrices-matrix-grid>
@@ -20,5 +26,3 @@
   }
   <p-toast></p-toast>
 </div>
-
-

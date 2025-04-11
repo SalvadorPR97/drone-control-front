@@ -7,12 +7,14 @@ import {Drone} from '../drones/interfaces/Drone.interface';
 import {MessageService} from 'primeng/api';
 import {DronesTableComponent} from './components/drones-table/drones-table.component';
 import {DroneCommandsComponent} from './components/drone-commands/drone-commands.component';
-import {Command} from '../../core/interfaces/Command';
+import {Command} from '../../core/interfaces/Command.enum';
 import {DroneMove} from '../drones/interfaces/DroneMove.interface';
 import {FlyingService} from '../../core/services/flying.service';
 import {ToastModule} from 'primeng/toast';
 import {firstValueFrom} from 'rxjs';
 import {NgStyle} from '@angular/common';
+import {AccordionModule} from 'primeng/accordion';
+import {CommandListExecComponent} from './components/command-list-exec/command-list-exec.component';
 
 @Component({
   selector: 'app-pages-flying',
@@ -23,7 +25,9 @@ import {NgStyle} from '@angular/common';
     DronesTableComponent,
     DroneCommandsComponent,
     ToastModule,
-    NgStyle
+    NgStyle,
+    AccordionModule,
+    CommandListExecComponent
   ],
   standalone: true,
   templateUrl: './flying.component.html',

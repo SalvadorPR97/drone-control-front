@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Output} from '@angular/core';
 import {ButtonDirective} from 'primeng/button';
 import {MatIcon} from '@angular/material/icon';
-import {Command} from '../../../../core/interfaces/Command';
+import {Command} from '../../../../core/interfaces/Command.enum';
 
 @Component({
   selector: 'pages-flying-drone-commands',

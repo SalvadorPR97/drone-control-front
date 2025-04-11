@@ -1,4 +1,4 @@
-import {Command} from '../../../core/interfaces/Command';
+import {Command} from '../../../core/interfaces/Command.enum';
 
 export interface DroneMove {
   id: number;
