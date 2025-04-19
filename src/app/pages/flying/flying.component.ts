@@ -65,11 +65,17 @@ export class FlyingComponent {
   }
 
   public async moveDrone(command: Command | Command[]): Promise<void> {
-    if (!this.selectedDrones?.length) return;
+    if (!this.selectedDrones?.length) {
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Must select at least one drone',
+        detail: 'You must select at least one drone from the list'
+      });
+      return;
+    }
 
     let allSuccess: boolean = true;
     let errormsg: string = "";
-
 
     for (const drone of this.selectedDrones) {
       const droneMove: DroneMove = {
