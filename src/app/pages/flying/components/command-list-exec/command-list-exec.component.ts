@@ -22,18 +22,19 @@ export class CommandListExecComponent {
   public commands: CommandInterface[] = [];
   private idCounter: number = 0;
   @Output()
-  public executeEmitter: EventEmitter<CommandInterface[]> = new EventEmitter();
+  public executeEmitter: EventEmitter<Command[]> = new EventEmitter();
   public selectedCommands: CommandInterface[] = [];
 
   addCommand(command: Command) {
     this.commands = [...this.commands, {id: this.idCounter,command:command}];
     this.idCounter++;
-    console.log(this.commands);
   }
   emitCommands() {
-    //TODO que el dron se mueva según las ordenes
-    this.executeEmitter.emit(this.commands);
-    console.log(this.commands);
+    let cleanCommands: Command[] = [];
+    this.commands.forEach((command: CommandInterface) => {
+      cleanCommands.push(command.command);
+    })
+    this.executeEmitter.emit(cleanCommands);
   }
   deleteCommand() {
     this.selectedCommands.forEach((command: CommandInterface) => {

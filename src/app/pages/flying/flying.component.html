@@ -15,7 +15,7 @@
             <pages-flying-drone-commands (commandEmitter)="moveDrone($event)"></pages-flying-drone-commands>
           </p-accordionTab>
           <p-accordionTab header="Multiple commands">
-            <pages-flying-command-list-exec></pages-flying-command-list-exec>
+            <pages-flying-command-list-exec (executeEmitter)="moveDrone($event)" ></pages-flying-command-list-exec>
           </p-accordionTab>
         </p-accordion>
       </div>

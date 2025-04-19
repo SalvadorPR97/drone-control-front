@@ -12,7 +12,6 @@ import {DroneMove} from '../drones/interfaces/DroneMove.interface';
 import {FlyingService} from '../../core/services/flying.service';
 import {ToastModule} from 'primeng/toast';
 import {firstValueFrom} from 'rxjs';
-import {NgStyle} from '@angular/common';
 import {AccordionModule} from 'primeng/accordion';
 import {CommandListExecComponent} from './components/command-list-exec/command-list-exec.component';
 
@@ -25,7 +24,6 @@ import {CommandListExecComponent} from './components/command-list-exec/command-l
     DronesTableComponent,
     DroneCommandsComponent,
     ToastModule,
-    NgStyle,
     AccordionModule,
     CommandListExecComponent
   ],
@@ -66,17 +64,18 @@ export class FlyingComponent {
     });
   }
 
-  public async moveDrone(command: Command): Promise<void> {
+  public async moveDrone(command: Command | Command[]): Promise<void> {
     if (!this.selectedDrones?.length) return;
 
     let allSuccess: boolean = true;
     let errormsg: string = "";
 
+
     for (const drone of this.selectedDrones) {
       const droneMove: DroneMove = {
         id: drone.id,
         matrizId: this.matrix.id,
-        orden: [command],
+        orden: Array.isArray(command)? command : [command],
       };
 
       try {
