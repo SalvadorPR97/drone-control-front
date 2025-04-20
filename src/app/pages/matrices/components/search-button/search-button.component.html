@@ -1,0 +1,3 @@
+<p-dropdown #matrixId [options]="matricesIds" [style]="{ width: '15rem' }" class="me-2"
+            placeholder="Select Matrix ID"></p-dropdown>
+<span (click)="this.emitId(this.matrixId.value)" label="View Matrix" pButton type="button"></span>

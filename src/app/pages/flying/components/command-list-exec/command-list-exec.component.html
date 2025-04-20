@@ -1,0 +1,37 @@
+<div class="d-flex flex-column gap-2">
+
+  <p-orderList
+    [value]="commands"
+    [(selection)]="selectedCommands"
+    [stripedRows]="true"
+    [metaKeySelection]="true"
+    [listStyle]="{ height: '20rem',  width:'100%'}"
+    header="Commands to execute">
+    <ng-template let-command pTemplate="item">
+      <div class="flex flex-wrap p-2 align-items-center gap-3">
+      <span class="font-bold text-900">
+        {{ command.command }}
+      </span>
+      </div>
+    </ng-template>
+  </p-orderList>
+  <pages-flying-drone-commands (commandEmitter)="addCommand($event)"></pages-flying-drone-commands>
+  <div class="d-flex justify-content-center gap-2">
+  <span
+    (click)="this.emitCommands()"
+    pButton
+    label="Execute"
+    severity="success"><mat-icon>play_arrow</mat-icon></span>
+    <span
+      (click)="this.deleteCommand()"
+      pButton
+      label="Delete"
+      severity="danger"><mat-icon>close</mat-icon></span>
+    <span
+      (click)="this.deleteAllCommands()"
+      pButton
+      label="Delete all"
+      severity="danger"><mat-icon>delete</mat-icon></span>
+  </div>
+
+</div>

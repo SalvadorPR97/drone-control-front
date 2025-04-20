@@ -1,0 +1,30 @@
+<div class="d-flex justify-content-center">
+  <div [style.background-color]="'var(--primary-color)'" class="d-flex gap-4 fw-bold mb-2 px-2 rounded-1 text-white">
+    <span>ID: {{ matrix.id }}</span>
+    <span>Max x: {{ matrix.max_x }}</span>
+    <span>Max y: {{ matrix.max_y }}</span>
+  </div>
+</div>
+
+<div class="grid-wrapper">
+  <div class="y-axis">
+    @for (row of this.rows; track row) {
+      <div class="y-label">{{ row }}</div>
+    }
+    <div class="empty-corner"></div>
+  </div>
+  <div [style.--size]="matrix.max_x" class="matrix-grid">
+    @for (row of this.rows; track row) {
+      @for (col of this.cols; track col) {
+        <div class="square" [class.busyByDrone]="isBusy(col, row)" [class.empty]="!isBusy(col, row)">
+          <div class="arrow-text" [ngClass]="getArrowPositionClass(col, row)">
+            {{ getArrowSymbol(col, row) }}
+          </div>
+        </div>
+      }
+    }
+    @for (col of cols; track col) {
+      <div class="x-label">{{ col }}</div>
+    }
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<p-toast></p-toast>
+<p-tabView [activeIndex]="0">
+  <p-tabPanel header="Show/Update matrix">
+    <pages-matrices-search-button (matrixIdEmitter)="getMatrix($event)"
+                                  [matricesIds]="this.matricesIds"></pages-matrices-search-button>
+    @if (matrix) {
+      <div class="row mt-1">
+        <div class="col-6">
+          <pages-matrices-drones-table [drones]="this.drones"></pages-matrices-drones-table>
+          <pages-matrices-form-update [matrix]="this.matrix" [updatedModal]="this.updatedModal"
+                                      (updateMatrixEmitter)="updateMatrix($event)"></pages-matrices-form-update>
+          <h3 class="mt-2">Delete Matrix</h3>
+          <pages-matrices-delete-button [matrix]="this.matrix" [title]="this.deleteTitle"
+                                        [subtitle]="this.deletesubTitle"
+                                        (deleteMatrixEmitter)="deleteMatrix($event)"></pages-matrices-delete-button>
+        </div>
+        <div class="col-6">
+          <pages-matrices-matrix-grid [matrix]="this.matrix"></pages-matrices-matrix-grid>
+        </div>
+      </div>
+    }
+  </p-tabPanel>
+  <p-tabPanel header="Create Matrix">
+    <pages-matrices-form-create (createMatrixEmitter)="createMatrix($event)"
+                                [visible]="createdModal"></pages-matrices-form-create>
+  </p-tabPanel>
+</p-tabView>

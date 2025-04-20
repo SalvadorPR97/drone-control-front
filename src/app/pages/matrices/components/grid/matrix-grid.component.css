@@ -1,0 +1,95 @@
+:root {
+  --size: "";
+}
+
+/* Grid of matrix */
+.grid-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.matrix-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--size), 1fr);
+  width: 100%;
+}
+
+.square {
+  aspect-ratio: 1 / 1;
+  border: 1px solid black;
+}
+
+.busyByDrone {
+  background-image: url('/assets/imagenDrone.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.empty {
+  background-color: #eeeed2;
+}
+
+/* Display coordinates  */
+.y-axis {
+  display: flex;
+  flex-direction: column;
+  margin-right: 5px;
+  justify-content: space-between;
+}
+
+.y-label {
+  text-align: right;
+  padding-right: 5px;
+  height: 100%;
+  align-content: center;
+}
+
+.empty-corner {
+  height: 80px; /* Tamaño de la fila de coordenadas X */
+}
+
+.x-label {
+  position: relative;
+  top: 4px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+}
+
+/* Orientation's arrow */
+.arrow-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 2rem;
+  transform: translate(-50%, -50%);
+  color: red;
+  pointer-events: none;
+}
+
+.arrow-N {
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.arrow-S {
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.arrow-E {
+  top: 50%;
+  right: 5%;
+  transform: translateY(-50%);
+}
+
+.arrow-O {
+  top: 50%;
+  left: 5%;
+  transform: translateY(-50%);
+}
+

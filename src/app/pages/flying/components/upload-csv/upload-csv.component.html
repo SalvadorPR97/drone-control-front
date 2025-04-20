@@ -1,0 +1,18 @@
+<p-fileUpload
+  name="csv"
+  customUpload="true"
+  accept=".csv"
+  [multiple]="false"
+  maxFileSize="1000000"
+  [auto]="true"
+  [showUploadButton]="false"
+  [showCancelButton]="false"
+  (uploadHandler)="handleUpload($event)"
+  #uploader>
+</p-fileUpload>
+
+<span
+  (click)="this.handleCSV()"
+  pButton
+  label="Execute"
+  severity="success"><mat-icon>play_arrow</mat-icon></span>

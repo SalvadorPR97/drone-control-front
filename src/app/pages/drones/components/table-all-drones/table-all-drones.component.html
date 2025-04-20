@@ -1,0 +1,48 @@
+<p-table
+  [value]="drones"
+  [scrollable]="true"
+  scrollHeight="600px"
+  [style]="{ tableLayout: 'fixed' }"
+>
+  <ng-template pTemplate="header">
+    <tr>
+      <th pSortableColumn="id">ID
+        <p-sortIcon field="id"/>
+      </th>
+      <th>Name</th>
+      <th>Model</th>
+      <th>X</th>
+      <th>Y</th>
+      <th>Orientation</th>
+      <th pSortableColumn="matrizId">Matrix
+        <p-sortIcon field="matrizId"/>
+      </th>
+      <th>Actions</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-drone>
+    <tr class="text-center">
+      <td>{{ drone.id }}</td>
+      <td>{{ drone.nombre }}</td>
+      <td>{{ drone.modelo }}</td>
+      <td>{{ drone.x }}</td>
+      <td>{{ drone.y }}</td>
+      <td>{{ drone.orientacion }}</td>
+      <td>{{ drone.matrizId }}</td>
+      <td>
+        <span label="Edit" pButton type="button" severity="help" class="me-2" (click)="openEditModal(drone)">
+          <mat-icon class="me-1">edit</mat-icon></span>
+        <pages-matrices-delete-button [matrix]="this.drone" [title]="this.deleteTitle" [subtitle]="this.deletesubTitle"
+                                      (deleteMatrixEmitter)="deleteDrone($event)"></pages-matrices-delete-button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+@if (editModalVisible) {
+  <pages-drones-update-modal
+    [visible]="editModalVisible"
+    [drone]="selectedDrone"
+    (visibleChangeEmitter)="closeEditModal()"
+    (save)="updateDrone($event)">
+  </pages-drones-update-modal>
+}

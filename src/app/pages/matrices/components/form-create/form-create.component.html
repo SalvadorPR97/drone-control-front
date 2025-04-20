@@ -1,0 +1,19 @@
+<h3>New Matrix</h3>
+<form [formGroup]="createMatrixForm" class="d-flex gap-3">
+  <p-floatLabel class="d-inline-block">
+    <p-inputNumber [showButtons]="true" formControlName="max_x" id="max_x" min="0"/>
+    <label for="max_x">Max_x</label>
+  </p-floatLabel>
+  <p-floatLabel class="d-inline-block">
+    <p-inputNumber [showButtons]="true" formControlName="max_y" id="max_y" min="0"/>
+    <label for="max_y">Max_y</label>
+  </p-floatLabel>
+  <span (click)="onSubmit()" label="Create Matrix" pButton type="button"></span>
+</form>
+<p-dialog [(visible)]="visible" [modal]="true" [style]="{ width: '25rem' }" header="Matrix Created">
+  <span class="p-text block mb-5">Matrix created correctly</span>
+  <div class="d-flex justify-content-end">
+    <p-button (onClick)="visible = false" label="Okay" severity="success"/>
+  </div>
+</p-dialog>
+

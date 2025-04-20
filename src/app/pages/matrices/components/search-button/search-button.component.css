@@ -1,0 +1,7 @@
+::ng-deep ul {
+  padding-left: 0; /* Asegura que los ítems dentro del dropdown estén alineados a la izquierda */
+}
+
+::ng-deep .p-dropdown-panel .p-dropdown-items .p-dropdown-item {
+  padding-left: 0.75rem;
+}
