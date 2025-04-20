@@ -14,6 +14,7 @@ import {ToastModule} from 'primeng/toast';
 import {firstValueFrom} from 'rxjs';
 import {AccordionModule} from 'primeng/accordion';
 import {CommandListExecComponent} from './components/command-list-exec/command-list-exec.component';
+import {UploadCsvComponent} from './components/upload-csv/upload-csv.component';
 
 @Component({
   selector: 'app-pages-flying',
@@ -25,7 +26,8 @@ import {CommandListExecComponent} from './components/command-list-exec/command-l
     DroneCommandsComponent,
     ToastModule,
     AccordionModule,
-    CommandListExecComponent
+    CommandListExecComponent,
+    UploadCsvComponent
   ],
   standalone: true,
   templateUrl: './flying.component.html',
@@ -81,7 +83,7 @@ export class FlyingComponent {
       const droneMove: DroneMove = {
         id: drone.id,
         matrizId: this.matrix.id,
-        orden: Array.isArray(command)? command : [command],
+        orden: Array.isArray(command) ? command : [command],
       };
 
       try {
@@ -105,5 +107,24 @@ export class FlyingComponent {
     });
   }
 
+  public async moveDroneByCsv(droneMoves: DroneMove[]): Promise<void> {
+    for (const droneMove of droneMoves) {
+        droneMove.matrizId = this.matrix.id;
+        try {
+          const updatedMatrix = await firstValueFrom(this.flyingService.moveDrone(droneMove));
+          if (updatedMatrix) {
+            this.matrix = updatedMatrix;
+            this.drones = updatedMatrix.drones;
+          }
+        } catch (error: any) {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Drone collision or out of range',
+            detail: `Drone with id ${droneMove.id} collided or out of range`
+          });
+        }
+      }
+  }
 }
+
 

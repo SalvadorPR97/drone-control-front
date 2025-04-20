@@ -17,6 +17,9 @@
           <p-accordionTab header="Multiple commands">
             <pages-flying-command-list-exec (executeEmitter)="moveDrone($event)" ></pages-flying-command-list-exec>
           </p-accordionTab>
+          <p-accordionTab header="Commands by csv">
+            <pages-flying-upload-csv (dronesMovesEmitter)="moveDroneByCsv($event)"></pages-flying-upload-csv>
+          </p-accordionTab>
         </p-accordion>
       </div>
       <div class="col-6">
