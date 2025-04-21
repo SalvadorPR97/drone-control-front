@@ -20,11 +20,26 @@
 }
 
 .busyByDrone {
-  background-image: url('/assets/imagenDrone.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
+}
+
+.drone-N {
+  background-image: url('/assets/img/droneN.png');
+}
+
+.drone-S {
+  background-image: url('/assets/img/droneS.png');
+}
+
+.drone-E {
+  background-image: url('/assets/img/droneE.png');
+}
+
+.drone-O {
+  background-image: url('/assets/img/droneO.png');
 }
 
 .empty {
@@ -56,40 +71,5 @@
   height: 20px;
   text-align: center;
   line-height: 20px;
-}
-
-/* Orientation's arrow */
-.arrow-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  font-size: 2rem;
-  transform: translate(-50%, -50%);
-  color: red;
-  pointer-events: none;
-}
-
-.arrow-N {
-  top: 5%;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.arrow-S {
-  bottom: 5%;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.arrow-E {
-  top: 50%;
-  right: 5%;
-  transform: translateY(-50%);
-}
-
-.arrow-O {
-  top: 50%;
-  left: 5%;
-  transform: translateY(-50%);
 }
 
