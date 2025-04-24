@@ -36,13 +36,11 @@ export class UploadCsvComponent {
   }
 
   handleCSV(): void {
-    console.log(this.file);
     if (!this.file) return;
 
     const reader = new FileReader();
     reader.onload = () => {
       const text = reader.result as string;
-      console.log(this.parseCSV(text));
       this.dronesMovesEmitter.emit(this.parseCSV(text));
     };
     reader.readAsText(this.file);
@@ -51,19 +49,21 @@ export class UploadCsvComponent {
   parseCSV(csv: string): DroneMove[] {
     const lines = csv.split('\n').filter(line => line.trim() !== '');
     const dronesMoves: DroneMove[] = [];
-    for (const line of lines) {
+    for (let i = 1; i < lines.length; i++) {
+      const line = lines[i];
       const parts = line.split(',').map(p => p.trim());
 
       if (parts.length < 2) continue;
 
       const droneId = Number(parts[0]);
-      const ordenes = parts.slice(1) as Command[]; // Asegúrate de que 'Command' es tu tipo
+      const ordenes = parts.slice(1) as Command[];
 
       const droneMove: DroneMove = {
         id: droneId,
         matrizId: 0,
         orden: ordenes
       };
+
       dronesMoves.push(droneMove);
     }
     return dronesMoves;

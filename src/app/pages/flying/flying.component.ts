@@ -109,21 +109,32 @@ export class FlyingComponent {
 
   public async moveDroneByCsv(droneMoves: DroneMove[]): Promise<void> {
     for (const droneMove of droneMoves) {
-        droneMove.matrizId = this.matrix.id;
-        try {
-          const updatedMatrix = await firstValueFrom(this.flyingService.moveDrone(droneMove));
-          if (updatedMatrix) {
-            this.matrix = updatedMatrix;
-            this.drones = updatedMatrix.drones;
-          }
-        } catch (error: any) {
+      droneMove.matrizId = this.matrix.id;
+      try {
+        const updatedMatrix = await firstValueFrom(this.flyingService.moveDrone(droneMove));
+        if (updatedMatrix) {
+          this.matrix = updatedMatrix;
+          this.drones = updatedMatrix.drones;
+        }
+      } catch (error: any) {
+        const message: string = error.message.split(',')[0];
+        const errorStatus: number = Number(message.split(' ')[3]);
+        if (errorStatus === 400) {
           this.messageService.add({
             severity: 'error',
-            summary: 'Drone collision or out of range',
-            detail: `Drone with id ${droneMove.id} collided or out of range`
+            summary: 'Error with csv',
+            detail: `CSV bad formatted for drone with id ${droneMove.id}`
+          });
+        } else {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Drone collisioned or out of range',
+            detail: `Drone with id ${droneMove.id} will collision of be out of range`
           });
         }
+
       }
+    }
   }
 }
 
