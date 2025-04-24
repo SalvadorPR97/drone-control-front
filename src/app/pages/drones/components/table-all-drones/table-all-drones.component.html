@@ -1,8 +1,7 @@
 <p-table
   [value]="drones"
-  [scrollable]="true"
-  scrollHeight="600px"
-  [style]="{ tableLayout: 'fixed' }"
+  [paginator]="true"
+  [rows]="7"
 >
   <ng-template pTemplate="header">
     <tr>
