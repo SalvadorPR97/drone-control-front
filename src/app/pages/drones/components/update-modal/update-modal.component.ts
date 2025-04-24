@@ -4,6 +4,7 @@ import {DialogModule} from 'primeng/dialog';
 import {FormsModule} from '@angular/forms';
 import {InputTextModule} from 'primeng/inputtext';
 import {ButtonDirective} from 'primeng/button';
+import {Orientation} from '../../../../core/interfaces/Orientation.enum';
 
 @Component({
   selector: 'pages-drones-update-modal',
@@ -22,6 +23,7 @@ export class UpdateModalComponent {
   @Input() drone!: DroneDTO;
   @Output() visibleChangeEmitter: EventEmitter<boolean> = new EventEmitter();
   @Output() save: EventEmitter<DroneDTO> = new EventEmitter();
+  public orientation: Orientation[] = [Orientation.N,Orientation.S,Orientation.E,Orientation.O];
 
   close() {
     this.visible = false;
@@ -32,4 +34,6 @@ export class UpdateModalComponent {
     this.save.emit(this.drone);
     this.close();
   }
+
+  protected readonly Orientation = Orientation;
 }
