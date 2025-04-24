@@ -19,7 +19,7 @@ export class DroneService {
   }
 
   public updateDrone(drone: DroneDTO): Observable<DroneDTO> {
-    return this.http.put<DroneDTO>(`${this.dronesBaseUrl}update/${drone.matrizId}`, drone).pipe(
+    return this.http.put<DroneDTO>(`${this.dronesBaseUrl}update/${drone.id}`, drone).pipe(
       catchError(this.handleError)
     );
   }
