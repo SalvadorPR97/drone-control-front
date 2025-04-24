@@ -29,7 +29,11 @@
 
     <div class="p-field mb-3">
       <label for="orientacion">Orientation: (N,S,E,O) </label>
-      <input id="orientacion" type="text" pInputText [(ngModel)]="drone.orientacion" />
+      <select id="orientacion" type="text" pInputText [(ngModel)]="drone.orientacion">
+        @for (orientation of this.orientation; track orientation) {
+          <option value="{{orientation}}">{{orientation}}</option>
+        }
+      </select>
     </div>
 
     <div class="p-field mb-3">
