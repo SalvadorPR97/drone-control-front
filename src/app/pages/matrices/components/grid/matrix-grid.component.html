@@ -16,10 +16,9 @@
   <div [style.--size]="matrix.max_x" class="matrix-grid">
     @for (row of this.rows; track row) {
       @for (col of this.cols; track col) {
-        <div class="square" [class.busyByDrone]="isBusy(col, row)" [class.empty]="!isBusy(col, row)">
-          <div class="arrow-text" [ngClass]="getArrowPositionClass(col, row)">
-            {{ getArrowSymbol(col, row) }}
-          </div>
+        <div class="square"
+             [ngClass]="[isBusy(col, row) ? 'busyByDrone' : '', getDroneClass(col, row)]"
+             [class.empty]="!isBusy(col, row)">
         </div>
       }
     }

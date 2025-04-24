@@ -34,27 +34,8 @@ export class MatrixGridComponent {
     return this.drones.some(drone => drone.x === x && drone.y === y);
   }
 
-  getArrowSymbol(row: number, col: number): string {
+  getDroneClass(row: number, col: number): string {
     let drone: Drone | undefined = this.drones.find(drone => drone.x == row && drone.y == col);
-    if (drone) {
-      switch (drone.orientacion) {
-        case 'N':
-          return '↑';
-        case 'S':
-          return '↓';
-        case 'E':
-          return '→';
-        case 'O':
-          return '←';
-        default:
-          return '';
-      }
-    }
-    return '';
-  }
-
-  getArrowPositionClass(row: number, col: number): string {
-    let drone: Drone | undefined = this.drones.find(drone => drone.x == row && drone.y == col);
-    return `arrow-${drone?.orientacion}`;
+    return `drone-${drone?.orientacion}`;
   }
 }
