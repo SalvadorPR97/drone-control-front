@@ -10,7 +10,7 @@
   </p-floatLabel>
   <span (click)="onSubmit()" label="Create Matrix" pButton type="button"></span>
 </form>
-<p-dialog [(visible)]="visible" [modal]="true" [style]="{ width: '25rem' }" header="Matrix Created">
+<p-dialog [(visible)]="visible" [modal]="true" [style]="{ width: '25rem' }" (onHide)="closeModal()" header="Matrix Created">
   <span class="p-text block mb-5">Matrix created correctly</span>
   <div class="d-flex justify-content-end">
     <p-button (onClick)="visible = false" label="Okay" severity="success"/>

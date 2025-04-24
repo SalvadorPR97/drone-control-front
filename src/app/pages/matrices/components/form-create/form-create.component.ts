@@ -36,6 +36,9 @@ export class FormCreateComponent {
     });
   }
 
+  closeModal() {
+    window.location.reload();
+  }
   onSubmit() {
     if (this.createMatrixForm.valid) {
       this.createMatrixEmitter.emit(this.createMatrixForm.value);
